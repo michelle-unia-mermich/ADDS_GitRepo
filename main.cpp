@@ -10,9 +10,11 @@ int main()
     Referee referee1;
     Player* player1;
     Player* player2;
-    player1 = new Human("Anna");
-    player2 = new Computer();
+    player1 = new Human("Anna"); 
+    player2 = new Human("Anderson");
+
     Player* result_ptr= referee1.refGame(player1, player2);
+
     if (result_ptr!=nullptr)
     {
         std::cout<< result_ptr->getName()<< " Wins"<<std::endl;

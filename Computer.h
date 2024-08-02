@@ -3,14 +3,14 @@
 #include <iostream>
 #include <string.h>
 #include "Player.h"
+#include "Move.h"
 
 class Computer: public Player
 {
     //only plays Rock
     public:
         Computer();
-        char makeMove() override;
-        std::string getName() override;
+        Move* makeMove() override;
 
 };
 #endif

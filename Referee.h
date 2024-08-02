@@ -8,8 +8,8 @@ class Referee
 {
     public:
         Referee();
-        //returns the references to the winning player
-        Player* refGame(Player* player1, Player* player2);
+        Player* refGame(Player* player1, Player* player2); //returns the references to the winning player
+        Move* beat(Move* move1_ptr, Move* move2_ptr); //returns pointer to the move that wins
 
 };
 #endif
