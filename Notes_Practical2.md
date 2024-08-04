@@ -10,9 +10,11 @@ Questions
 7. Player.h: we want the child classes to use the destructor of the parent class since the parent class is the one containig a dynamicn pointer. However, the parent class is an abstract class that needs a VIRTUAL destructor. Second, how to make the child classes use both what is written in the destructor of the parent class and also the child class?
 8. In Move.h, the function isWeakAgainst() when having a tie or losing both return FALSE. So how do we take care of a tie? Take care of the tie in Referee class's refGame?
 9. The WeakAgainst vector in Move class must take care of incompatible, compatible moves as well eg. what if entering Rock against Monkey? But I don't know how to make the array take care of this, so I take care of compatibility in referee's refGame. Howeer, refGame can only print out player1 pointer, player2 pointer or nullptr if a Tie - if incompatible, it also prints out nullptr which is a Tie? That is wrong. So we take care of compatibility in main? But we can't put it in main either since the users only type in their moves when function refGame of Referee is called once in main.
-10. I haven't take care of when MoveFactory::getMove returns nullptr eg. the string entered is not valid
-11. Linker error of static weakerAgainst vector position
-12. Linker error of not having definitions for destructors of classes, forgot to include other .cpp files, for not calling constructor of parent class in the child classes
+10. **important: What is the logic for isWeakAgainst()function in Move.cpp** In my isWeakAgainst() function, I set a lot of if else statement for exception from the array - that violates open-closed principle and it's not really automatic!
+11. **important: in the end, I use WeakAgainstArray in Move class and not WeakAgainstVector**, because it is impossible to set up/initialise the values of static WeakAgainstVector - I can only initialise the values of static array (see again version of the Move class in MoveVector.h and Move.Vector.cpp)
+12. I haven't take care of when MoveFactory::getMove returns nullptr eg. the string entered is not valid
+13. Linker error of static weakerAgainst vector position
+14. Linker error of not having definitions for destructors of classes, forgot to include other .cpp files, for not calling constructor of parent class in the child classes
 ________________________________________________
 Note: *in order not to violate open-closed principle*, we don't modify the Move parent class if we want to add more moves. We just add more child classes to the Move parent class.
 
