@@ -10,6 +10,7 @@ class Computer: public Player
     //only plays Rock
     public:
         Computer();
+        Computer(std::string name);
         Move* makeMove() override;
 
 };

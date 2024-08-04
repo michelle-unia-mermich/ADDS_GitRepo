@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Human.h"
-
+#include "MoveFactory.h"
 
 Human:: Human(): Player()
 {
@@ -9,18 +9,18 @@ Human:: Human(): Player()
     //if we do not write Player(), just Human:: Human(), he said that the constructor of Player() is not invoked, but I thought it is. I will check again.
 }
 
-Human::Human(std::string new_name):Player()
+Human::Human(std::string newName):Player()
 {
-    name=new_name;
+    name=newName;
 }
 
 Move* Human::makeMove()
 {
     std::cout<<"Enter move: ";
-    std::string new_move;
-    std::cin  >> new_move;
+    std::string newMove;
+    std::cin  >> newMove;
     std::cout<< std::endl;
-    Move* result = new Move(new_move);
+    Move* result = MoveFactory::getMove(newMove);
     return result;
 }
 

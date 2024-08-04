@@ -3,9 +3,15 @@
 #include "Player.h"
 #include "Human.h"
 #include "Computer.h"
+#include "Move.h"
 
 int main()
 {
+    //create the WeakerAgainst vector for this game
+    std::string arr[]={"Pirate", "Zombie", "Ninja", "Robot", "Monkey", "Paper", "Scissors", "Rock"};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    Move::instantiateVector(arr, size);
+
     //create the referee
     Referee referee1;
     Player* player1;
@@ -23,6 +29,7 @@ int main()
     {
         std::cout<< "It's a Tie."<<std::endl;
     }
+
 
     delete player1;
     delete player2;
