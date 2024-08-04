@@ -7,10 +7,6 @@
 
 int main()
 {
-    //create the WeakerAgainst vector for this game
-    std::string arr[]={"Pirate", "Zombie", "Ninja", "Robot", "Monkey", "Paper", "Scissors", "Rock"};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    Move::instantiateVector(arr, size);
 
     //create the referee
     Referee referee1;

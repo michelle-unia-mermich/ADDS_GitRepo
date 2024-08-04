@@ -4,8 +4,6 @@
 
 //declaration of static data member vector outside the class
 //defining it fixes the unresolved external error, see https://stackoverflow.com/questions/7531981/how-to-instantiate-a-static-vector-of-object
-std::vector<std::string> Move::weakerAgainst;
-//!Where to put this line
 
 std::string Move::weakerAgainstArray[]={"Pirate", "Zombie", "Ninja", "Robot", "Monkey", "Paper", "Scissors", "Rock"};
 
@@ -19,14 +17,6 @@ Move::~Move()
 
 }
 
-void Move::instantiateVector(std::string arr[], int size)
-{
-    //initialise vector via array
-    for (int i=0; i<size ; i++)
-    {
-        weakerAgainst.push_back(arr[0]);
-    }
-}
 
 void Move::setName(std::string newName)
 {
@@ -38,14 +28,9 @@ std::string Move::getName()
     return name;
 }
 
-std::vector<std::string> Move::getWeakerAgainst()
+std::string* Move::getweakerAgainstArray()
 {
-    return weakerAgainst;
-}
-
-void Move::setWeakerAgainst(std::vector<std::string> newWeakerAgainst)
-{
-    weakerAgainst = newWeakerAgainst;
+    return weakerAgainstArray;
 }
 
 bool Move::isWeakAgainst(Move* newMove)
