@@ -7,6 +7,8 @@
 std::vector<std::string> Move::weakerAgainst;
 //!Where to put this line
 
+std::string Move::weakerAgainstArray[]={"Pirate", "Zombie", "Ninja", "Robot", "Monkey", "Paper", "Scissors", "Rock"};
+
 Move::Move()
 {
     name="";
@@ -98,6 +100,7 @@ bool Move::isWeakAgainst(Move* newMove)
     if ((name=="Paper")&&(opponentMoveName=="Rock"))
    {
         //ours is stronger
+        std::cout << "This line is executed 1.";
         return false;
    }
    else if ((name=="Rock")&&(opponentMoveName=="Paper"))
@@ -108,18 +111,18 @@ bool Move::isWeakAgainst(Move* newMove)
     //following the rules of the array {"Pirate", "Zombie", "Ninja", "Robot", "Monkey", "Paper", "Scissors", "Rock"}
     //for(std::string moveName : weakerAgainst) //recall: this is how you loop in a vector
     //recall: another to loop through a vector is like this
-    for(unsigned int i = 0; i < weakerAgainst.size(); i++)
+    int size_array = sizeof(weakerAgainstArray)/sizeof(weakerAgainstArray[0]);
+    for(unsigned int i = 0; i < size_array ; i++)
     {
-        if(weakerAgainst[i] == this->name) //can also use vec.at(i) instead of vec[i]
+        if(weakerAgainstArray[i] == this->name) //can also use vec.at(i) instead of vec[i]
         {
             //can also use find() to find the index of an element in a vector but it might be more complicated
             unsigned int indexOurMove = i;
-            for(unsigned int j = (indexOurMove+1); j < weakerAgainst.size(); j++)
+            for(unsigned int j = (indexOurMove+1); j < size_array ; j++)
             {
-                if(weakerAgainst[j]==opponentMoveName)
+                if(weakerAgainstArray[j]==opponentMoveName)
                 {
                     //then the opponent Name is found after ourMoveName in WeakerAgainst vector => our move is weaker against
-                    std::cout<<"move1 is weak against move2";
                     return true;
                     break; //break the loop to find opponentMoveName (actually this one no need since return true already exits out of the whole isWeakerAgainst function)
                 }
@@ -127,7 +130,6 @@ bool Move::isWeakAgainst(Move* newMove)
             break;//break the loop to find index of this->name
         }
     }
-    std::cout<<"move1 is not weak against move2";
     return false;
 
 }

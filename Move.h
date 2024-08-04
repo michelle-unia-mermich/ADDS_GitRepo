@@ -12,6 +12,8 @@ class Move
         //Another keyword is "final", in which we can only set the value ONCE. but for static, we can set the value more than once.
         std::string name;
         static std::vector<std::string> weakerAgainst;
+        
+        static std::string weakerAgainstArray[];
     public:
         Move();
 

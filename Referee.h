@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string.h>
 #include "Player.h"
+#include "Computer.h"
+#include "Human.h"
 
 class Referee
 {

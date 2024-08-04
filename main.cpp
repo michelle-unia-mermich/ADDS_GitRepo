@@ -23,18 +23,25 @@ int main()
 
     Player* result_ptr= referee1.refGame(player1, player2);
 
-    if (result_ptr!=nullptr)
+    if ((result_ptr==player1)||(result_ptr==player2))
     {
         std::cout<< result_ptr->getName()<< " Wins"<<std::endl;
     }
-    else
+    else if (result_ptr==nullptr)
     {
         std::cout<< "It's a Tie."<<std::endl;
+        //no need to delete a nullptr?
+    }
+    else 
+    {
+        //incompatible, not printing out anything
+        delete result_ptr;
     }
 
 
     delete player1;
     delete player2;
+    //delete result_ptr; //cannot delete result_ptr here because what if it is equal to player1 or player2, then we are deletingn twice?
 
     return 0;
 }
