@@ -7,12 +7,12 @@ Player* Referee::refGame(Player* player1, Player* player2)
     Move* move1= player1->makeMove();
     Move* move2= player2->makeMove();
 
-    if (move1->isWeakAgainst(move2))
+    if (move1->isWeakAgainst(move2)==true)
     {
-        //player1 wins
-        return player1; 
+        //player2 wins
+        return player2; 
     }
-    else 
+    else if (move1->isWeakAgainst(move2)==false)
     {
         //there are two cases, either a tie or player 1 loses
         if (move1->getName()==move2->getName())
@@ -21,7 +21,7 @@ Player* Referee::refGame(Player* player1, Player* player2)
         }
         else
         {
-            return player2;
+            return player1;
         }
 
         //or, can also check if move2->isWeakAgainst(move1): yes: winner is player2; no: it's a tie

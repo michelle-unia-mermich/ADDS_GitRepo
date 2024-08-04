@@ -105,7 +105,7 @@ bool Move::isWeakAgainst(Move* newMove)
         //ours is weaker
         return true;
    }
-    //following the rules of the array
+    //following the rules of the array {"Pirate", "Zombie", "Ninja", "Robot", "Monkey", "Paper", "Scissors", "Rock"}
     //for(std::string moveName : weakerAgainst) //recall: this is how you loop in a vector
     //recall: another to loop through a vector is like this
     for(unsigned int i = 0; i < weakerAgainst.size(); i++)
@@ -114,11 +114,12 @@ bool Move::isWeakAgainst(Move* newMove)
         {
             //can also use find() to find the index of an element in a vector but it might be more complicated
             unsigned int indexOurMove = i;
-            for(unsigned int j = indexOurMove; j < weakerAgainst.size(); j++)
+            for(unsigned int j = (indexOurMove+1); j < weakerAgainst.size(); j++)
             {
-                if(weakerAgainst[j]==newMove->getName())
+                if(weakerAgainst[j]==opponentMoveName)
                 {
                     //then the opponent Name is found after ourMoveName in WeakerAgainst vector => our move is weaker against
+                    std::cout<<"move1 is weak against move2";
                     return true;
                     break; //break the loop to find opponentMoveName (actually this one no need since return true already exits out of the whole isWeakerAgainst function)
                 }
@@ -126,6 +127,7 @@ bool Move::isWeakAgainst(Move* newMove)
             break;//break the loop to find index of this->name
         }
     }
+    std::cout<<"move1 is not weak against move2";
     return false;
 
 }

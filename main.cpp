@@ -16,8 +16,10 @@ int main()
     Referee referee1;
     Player* player1;
     Player* player2;
-    player1 = new Human("Anna"); 
-    player2 = new Human("Anderson");
+    Player* player3;
+    player1 = new Human("Person1"); 
+    player2 = new Human("Person2");
+    player3 = new Computer();
 
     Player* result_ptr= referee1.refGame(player1, player2);
 
