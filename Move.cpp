@@ -97,13 +97,13 @@ bool Move::isWeakAgainst(Move* newMove)
     //for(std::string moveName : weakerAgainst) //recall: this is how you loop in a vector
     //recall: another to loop through a vector is like this
     int size_array = sizeof(weakerAgainstArray)/sizeof(weakerAgainstArray[0]);
-    for(unsigned int i = 0; i < size_array ; i++)
+    for(int i = 0; i < size_array ; i++)
     {
         if(weakerAgainstArray[i] == this->name) //can also use vec.at(i) instead of vec[i]
         {
             //can also use find() to find the index of an element in a vector but it might be more complicated
-            unsigned int indexOurMove = i;
-            for(unsigned int j = (indexOurMove+1); j < size_array ; j++)
+            int indexOurMove = i;
+            for(int j = (indexOurMove+1); j < size_array ; j++)
             {
                 if(weakerAgainstArray[j]==opponentMoveName)
                 {
