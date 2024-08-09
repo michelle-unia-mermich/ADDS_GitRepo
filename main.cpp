@@ -1,43 +1,22 @@
 #include <iostream>
-#include "Referee.h"
-#include "Player.h"
-#include "Human.h"
-#include "Computer.h"
-#include "Move.h"
+
+#include "Truckloads.h"
+#include "TruckloadsTest.h"
+
+#include "Reverser.h"
 
 int main()
 {
+    TruckloadTest truckload_test_obj; 
+    truckload_test_obj.run_test(0);
+    truckload_test_obj.run_test(1);
+    truckload_test_obj.run_test(2);
 
-    //create the referee
-    Referee referee1;
-    Player* player1;
-    Player* player2;
-    Player* player3;
-    player1 = new Human("Person1"); 
-    player2 = new Human("Person2");
-    player3 = new Computer();
+    Reverser reverser;
+    std::cout<<reverser.reverseDigit(54321) << std::endl;
+    std::cout<<reverser.reverseString("abc") << std::endl;
+    std::cout<<reverser.reverseString("abdefg") << std::endl;
 
-    Player* result_ptr= referee1.refGame(player1, player2);
-
-    if ((result_ptr==player1)||(result_ptr==player2))
-    {
-        std::cout<< result_ptr->getName()<< " Wins"<<std::endl;
-    }
-    else if (result_ptr==nullptr)
-    {
-        std::cout<< "It's a Tie."<<std::endl;
-        //no need to delete a nullptr?
-    }
-    else 
-    {
-        //incompatible, not printing out anything
-        delete result_ptr;
-    }
-
-
-    delete player1;
-    delete player2;
-    //delete result_ptr; //cannot delete result_ptr here because what if it is equal to player1 or player2, then we are deletingn twice?
-
+    
     return 0;
 }
