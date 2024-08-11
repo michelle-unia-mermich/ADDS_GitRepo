@@ -2,17 +2,25 @@
 
 Questions
 1. //! std::vector<std::string> weakerAgainst; override //Why must our child classes of Move have this 
+
 2. question: in Move* MoveFactory::getMove(std::string moveType): do if else statement in this seems to break open-closed principle
+
 3.  //!Rock(std::string name); //in class Rock: why must we have this when we can just set the name to "Rock" in the default constructor?
+
 4. In Move.h, I think we MUST set std::vector<std::string> weakerAgainst; to static, since we want all Move objects to have access to this and we only want to set the static vector ONCE, not resetting the vector to empty each time a new object Move is created.
+
 5. In Player.h : void setCurrentMove(Move* currentMove); //not sure if a getter function for currentMove is needed when the human enters the move via virtual makeMove() function, while the move of a computer does not change
+
 6. We don't need MoveFactory moveFactory object in Player class because the only function MoveFactory class contains is a static function!
+
 7. Player.h: we want the child classes to use the destructor of the parent class since the parent class is the one containig a dynamicn pointer. However, the parent class is an abstract class that needs a VIRTUAL destructor. Second, how to make the child classes use both what is written in the destructor of the parent class and also the child class?
 8. In Move.h, the function isWeakAgainst() when having a tie or losing both return FALSE. So how do we take care of a tie? Take care of the tie in Referee class's refGame?
 9. The WeakAgainst vector in Move class must take care of incompatible, compatible moves as well eg. what if entering Rock against Monkey? But I don't know how to make the array take care of this, so I take care of compatibility in referee's refGame. Howeer, refGame can only print out player1 pointer, player2 pointer or nullptr if a Tie - if incompatible, it also prints out nullptr which is a Tie? That is wrong. So we take care of compatibility in main? But we can't put it in main either since the users only type in their moves when function refGame of Referee is called once in main.
 10. **important: What is the logic for isWeakAgainst()function in Move.cpp** In my isWeakAgainst() function, I set a lot of if else statement for exception from the array - that violates open-closed principle and it's not really automatic!
 11. **important: in the end, I use WeakAgainstArray in Move class and not WeakAgainstVector**, because it is impossible to set up/initialise the values of static WeakAgainstVector - I can only initialise the values of static array (see again version of the Move class in MoveVector.h and Move.Vector.cpp)
 12. I haven't take care of when MoveFactory::getMove returns nullptr eg. the string entered is not valid
+
+
 13. Linker error of static weakerAgainst vector position
 14. Linker error of not having definitions for destructors of classes, forgot to include other .cpp files, for not calling constructor of parent class in the child classes
 ________________________________________________
