@@ -1,6 +1,5 @@
-main:
-	g++ -std=c++11 -o main.o main.cpp Player.cpp Human.cpp Computer.cpp Referee.cpp
-	./main.o
-
+question1:
+	g++ -o question1.o question1.cpp
+	./question1.o
 cleanup:
 	rm -rf *.o
