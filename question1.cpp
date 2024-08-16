@@ -42,4 +42,3 @@ std::vector<int> question1(int d, int r, int n)
     return result_vector;
 }
 
-

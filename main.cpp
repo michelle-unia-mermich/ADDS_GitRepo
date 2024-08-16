@@ -1,20 +1,27 @@
+#include "question2.h"
 #include <iostream>
-#include <math.h>    
-#include <vector> 
+#include <time.h>  
 
 int main()
 {
-    int d=4; //1 1+2 1+2+2
-    int r=-5; //1 1*3 1*3*3
-    int n=6;
-    std::cout <<arithmetic(d,n)<<std::endl;
+    /* initialize random seed: */
+    srand (time(NULL));
 
-    //printing out elements of question1
-    std::vector<int> vector = question1(d, r, n);
-    for (auto& number: vector)
+    BagOfHolding bag;
+    bag.addItem("A");
+    bag.addItem("B");
+    bag.addItem("C");
+
+    //printing element from the bag
+    std::vector<std::string> vector = bag.getItems();
+    for(auto string: vector)
     {
-        std::cout <<number << " ";
+        std::cout<< string<< " ";
     }
-    std::cout<< std::endl;
+    std::cout<<std::endl;
+
+    
+
+
     return 0;
 }
