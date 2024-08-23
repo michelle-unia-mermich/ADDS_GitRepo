@@ -16,17 +16,12 @@
 
         vector<int> result(s2.size(),-1);
         //we can put in an array because we know how many indices will be added to it
-        int startingIndexToFind = 0;
+        size_t found = 0;
 
         for(size_t i = 0; i <= (s2.size()-1); i++) 
         {
-            if (i>0)
-            {
-                startingIndexToFind =result.at(i-1);//is the starting index of the last prefix 
-            }
-
-            size_t found = s1.find(s2.substr(0, i),startingIndexToFind); //find function returns the index in s1 where substr(0, i) is first found
-
+            size_t found = s1.find(s2.substr(0, i+1),found); //find function returns the index in s1 where substr(0, i) is first found
+            //another way: size_t found = s1.find(s2.substr(0, i),found);
             if (found != string::npos) {
                 //no need to do push back
                 result.at(i)=found;
