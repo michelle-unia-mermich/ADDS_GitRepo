@@ -1,40 +1,37 @@
-#include "question2.h"
+#include "Finder.h"
 #include <iostream>
 #include <time.h>  
 
+
+
 int main()
 {
-    /* initialize random seed: */
-    srand (time(NULL));
+    clock_t  start, end; 
+     
+    
+    Finder finder;
+    std::string s1 = "4634554567";
+    std::string s2 = "45689";
 
-    BagOfHolding bag;
-    bag.addItem("A");
-    bag.addItem("B");
-    bag.addItem("C");
-    bag.addItem("D");
+    start = clock(); 
+    // program runs here
+    std::vector<int> result = finder.findSubstrings(s1,s2);
+    end = clock(); 
+    double dblTime = ((double)(end - start)) / CLOCKS_PER_SEC; 
 
-    //printing element from the bag
-    std::vector<std::string> vector = bag.getItems();
-    for(auto string: vector)
+    //Print out the elements in vectorfor (auto element in result)
+    std:: cout<< "The elements of the vector are: "<< std::endl;
+    for (auto i : result)
     {
-        std::cout<< string<< " ";
+        std::cout << i << " ";
     }
-    std::cout<<std::endl;
+    std::cout<< std::endl;
 
-    std::cout<<bag.removeItem("A")<<
-    std::cout<<bag.remove(0);
-    std::cout<<bag.remove();
-
-    //printing element from the bag
-    std::vector<std::string> vector2 = bag.getItems();
-    for(auto string: vector2)
-    {
-        std::cout<< string<< " ";
-    }
-    std::cout<<std::endl;
-
-
-
+    
+     
+    // How long it took to run? 
+    
+    std:: cout<< "The time it took for the program to run is: "<< dblTime << std::endl;
 
     return 0;
 }
