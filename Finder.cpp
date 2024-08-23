@@ -14,7 +14,7 @@
     //2- For the next larger prefix, start from the first index of occurence of the smaller prefix. If the larger prefix is not found, go to the next first instance of the larger prefix
     vector<int> Finder::findSubstrings(string s1, string s2) {
 
-        vector<int> result;
+        vector<int> result(s2.size(),-1);
         //we can put in an array because we know how many indices will be added to it
         int startingIndexToFind = 0;
 
@@ -28,9 +28,10 @@
             size_t found = s1.find(s2.substr(0, i),startingIndexToFind); //find function returns the index in s1 where substr(0, i) is first found
 
             if (found != string::npos) {
-                result.push_back(found);
+                //no need to do push back
+                result.at(i)=found;
             } else {
-                result.push_back(-1);
+                break; //break out from the for loop
             }
         }
         return result;
