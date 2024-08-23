@@ -12,19 +12,19 @@ using namespace std;
 //So the logic will be
 //1- Find the first index of occurence of a smaller prefix
 //2- For the next larger prefix, start from the first index of occurence of the smaller prefix. If the larger prefix is not found, go to the next first instance of the larger prefix
-vector<int> Finder::findSubstrings_1(string s1, string s2) {
+vector<int> Finder::findSubstrings(string s1, string s2) {
 
     vector<int> result(s2.size(),-1);
     //we can put in an array because we know how many indices will be added to it
     size_t found = 0;
 
-    for(size_t i = 0; i <= (s2.size()-1); i++) 
+    for(size_t i = 1; i <= s2.size(); i++) 
     {
-        size_t found = s1.find(s2.substr(0, i+1),found); //find function returns the index in s1 where substr(0, i) is first found
+        found = s1.find(s2.substr(0, i),found); //find function returns the index in s1 where substr(0, i) is first found
         //another way: size_t found = s1.find(s2.substr(0, i),found);
         if (found != string::npos) {
             //no need to do push back
-            result.at(i)=found;
+            result.at(i-1)=found; //so there are fewer changes
         } else {
             break; //break out from the for loop
         }
@@ -32,7 +32,7 @@ vector<int> Finder::findSubstrings_1(string s1, string s2) {
     return result;
 }
 
-vector<int> Finder::findSubstrings(string s1, string s2) {
+vector<int> Finder::findSubstrings_1(string s1, string s2) {
 
     vector<int> result(s2.size(),-1);
     //we can put in an array because we know how many indices will be added to it
