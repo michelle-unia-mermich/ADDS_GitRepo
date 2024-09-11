@@ -42,7 +42,7 @@ std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2)
     int n1 = str1.length(), n2 = str2.length();
  
     // Reverse both of strings
-    std::reverse(str1.begin(), str1.end());
+    std::reverse(str1.begin(), str1.end()); //std::reverse is a method in #include <algorithm>
     std::reverse(str2.begin(), str2.end());
  
     int carry = 0;

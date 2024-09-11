@@ -247,7 +247,7 @@ int LinkedList::get(int pos)
     }
     else
     {
-        return std::numeric_limits<int>::max(); //maximum finite value
+        return std::numeric_limits<int>::max(); //maximum finite value. To use this must include <limits>
         
     }
 }
