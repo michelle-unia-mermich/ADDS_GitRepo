@@ -5,7 +5,7 @@
 #include <list>
 #include <string>
 
-class bigNumCalc {
+class BigNumCalc {
 public:
     std::list<int> buildBigNum(std::string numString);
     //A method that creates a list representing the provided string. For example, a string "12345" would become a list with elements 1,2,3,4, and 5 respectively.

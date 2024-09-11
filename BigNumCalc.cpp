@@ -1,7 +1,7 @@
 #include "BigNumCalc.h"
 #include <vector>
 
-std::list<int> bigNumCalc::buildBigNum(std::string numString)
+std::list<int> BigNumCalc::buildBigNum(std::string numString)
 {
     std::list<int> l = {};
     int length=numString.length();
@@ -13,7 +13,7 @@ std::list<int> bigNumCalc::buildBigNum(std::string numString)
     return l;
 }
 
-std::string bigNumCalc::convertbacktoString(std::list<int> num)
+std::string BigNumCalc::convertbacktoString(std::list<int> num)
 {
     std::string result="";
     for(auto i: num)
@@ -24,7 +24,7 @@ std::string bigNumCalc::convertbacktoString(std::list<int> num)
     return result;
 }
 
-std::list<int> bigNumCalc::add(std::list<int> num1, std::list<int> num2)
+std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2)
 {
     std::string str1=convertbacktoString(num1);
     std::string str2=convertbacktoString(num2);
@@ -95,7 +95,7 @@ bool isSmaller(std::string str1, std::string str2)
     return false; 
 } 
 
-std::list<int> bigNumCalc::sub(std::list<int> num1, std::list<int> num2)
+std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2)
 {
     std::string str1=convertbacktoString(num1);
     std::string str2=convertbacktoString(num2);
@@ -148,7 +148,7 @@ std::list<int> bigNumCalc::sub(std::list<int> num1, std::list<int> num2)
     return buildBigNum(str); 
 }
 
-std::list<int> bigNumCalc::mul(std::list<int> list1, std::list<int> list2)
+std::list<int> BigNumCalc::mul(std::list<int> list1, std::list<int> list2)
 {
     std::string num1=convertbacktoString(list1);
     std::string num2=convertbacktoString(list2);
