@@ -4,6 +4,9 @@ main_michelle:
 main_michelle2:
 	g++ -std=c++11 -o main_michelle2.o main_michelle2.cpp BigNumCalc.cpp
 	./main_michelle2.o
+main_michelle3:
+	g++ -std=c++11 -o main_michelle3.o main_michelle3.cpp BigNumCalc.cpp
+	./main_michelle3.o
 main:
 	g++ -std=c++11 -o main.out -O2 -Wall *.cpp
 	./main.out

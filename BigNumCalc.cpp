@@ -155,11 +155,11 @@ std::list<int> BigNumCalc::mul(std::list<int> list1, std::list<int> list2)
     std::string num2=convertbacktoString(list2);
     // Convert the input numbers from strings to vectors of integers
     std::vector<int> vec1(num1.size());
-    for (int i = 0; i < num1.size(); i++) {
+    for (unsigned int i = 0; i < num1.size(); i++) {
         vec1[i] = num1[num1.size() - i - 1] - '0';
     }
     std::vector<int> vec2(num2.size());
-    for (int i = 0; i < num2.size(); i++) {
+    for (unsigned int i = 0; i < num2.size(); i++) {
         vec2[i] = num2[num2.size() - i - 1] - '0';
     }
 
@@ -167,9 +167,9 @@ std::list<int> BigNumCalc::mul(std::list<int> list1, std::list<int> list2)
     std::vector<int> result(vec1.size() + vec2.size());
 
     // Multiply each digit in vec2 with vec1 and add the result to the appropriate position in the result vector
-    for (int i = 0; i < vec2.size(); i++) {
+    for (unsigned int i = 0; i < vec2.size(); i++) {
         int carry = 0;
-        for (int j = 0; j < vec1.size(); j++) {
+        for (unsigned int j = 0; j < vec1.size(); j++) {
             int product = vec1[j] * vec2[i] + carry + result[i + j];
             carry = product / 10;
             result[i + j] = product % 10;
@@ -182,7 +182,7 @@ std::list<int> BigNumCalc::mul(std::list<int> list1, std::list<int> list2)
         result.pop_back();
     }
     std::string str(result.size(), '0');
-    for (int i = 0; i < result.size(); i++) {
+    for (unsigned int i = 0; i < result.size(); i++) {
         str[result.size() - i - 1] = result[i] + '0';
     }
     return buildBigNum(str);
