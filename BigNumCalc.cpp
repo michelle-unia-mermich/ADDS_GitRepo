@@ -1,5 +1,6 @@
 #include "BigNumCalc.h"
 #include <vector>
+#include <algorithm>
 
 std::list<int> BigNumCalc::buildBigNum(std::string numString)
 {
@@ -41,8 +42,8 @@ std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2)
     int n1 = str1.length(), n2 = str2.length();
  
     // Reverse both of strings
-    reverse(str1.begin(), str1.end());
-    reverse(str2.begin(), str2.end());
+    std::reverse(str1.begin(), str1.end());
+    std::reverse(str2.begin(), str2.end());
  
     int carry = 0;
     for (int i=0; i<n1; i++)
@@ -69,7 +70,7 @@ std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2)
         str.push_back(carry+'0');
  
     // reverse resultant string
-    reverse(str.begin(), str.end());
+    std::reverse(str.begin(), str.end());
  
     return buildBigNum(str);
 }
