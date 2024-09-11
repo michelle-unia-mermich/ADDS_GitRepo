@@ -3,7 +3,7 @@
 
 int main()
 {
-    bigNumCalc bigNumCalc_obj;
+    BigNumCalc bigNumCalc_obj;
     std::list<int> l = bigNumCalc_obj.buildBigNum("12345");
     //iterate through
     for(auto i: l)
