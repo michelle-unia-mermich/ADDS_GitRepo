@@ -52,7 +52,7 @@ int LinkedList::search(int target)
 
 Node* LinkedList::traverse(int pos)
 {
-    unsigned int position = 0; //starting position
+    int position = 0; //starting position
 
     Node* currNode = head; //currNode is the current-traversed-node
 
