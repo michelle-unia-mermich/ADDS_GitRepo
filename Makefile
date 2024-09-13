@@ -1,6 +1,6 @@
 main:
-	g++ -std=c++11 -o main.o main.cpp Player.cpp Human.cpp Computer.cpp Referee.cpp
-	./main.o
+	g++ -std=c++11 -o test.o test.cpp Node.cpp LinkedList.cpp
+	./test.o
 
 cleanup:
 	rm -rf *.o

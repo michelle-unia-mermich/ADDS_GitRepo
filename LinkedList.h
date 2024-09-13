@@ -12,6 +12,8 @@ public:
     void insertFront(int item);
     void deleteFront();
     void printList();
+    int search(int target);
+    Node* traverse(int pos);
 
     bool swap(int pos1, int pos2);
     bool find_and_delete(int target);

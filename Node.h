@@ -5,8 +5,12 @@ class Node {
     int data;
     Node* link;
     friend class LinkedList;
+
 public:
     Node(int, Node*);
+    int print_data();
+    void change_data(int new_data);
+    Node* print_link();
 };
 
 #endif
