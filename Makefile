@@ -1,5 +1,5 @@
 main:
-	g++ -std=c++11 -o main.o main.cpp Player.cpp Human.cpp Computer.cpp Referee.cpp
+	g++ -std=c++11 -o main.o main.cpp 
 	./main.o
 
 cleanup:
