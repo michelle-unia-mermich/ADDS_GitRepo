@@ -25,12 +25,7 @@ class TrieNode //is a Trie Node in the Trie data structure
         //is the ending of a word or not
         bool isWord;
 
-        TrieNode()
-        {
-            //isWord is false
-            //every child node in the "child" array to NULL
-            isWord=false;
-        }
+        TrieNode();
 
 };
 #endif
