@@ -1,5 +1,5 @@
 #include <iostream>
 
-int main(int, char**){
-    std::cout << "Hello, from trie!\n";
+int main(){
+    return 0;
 }

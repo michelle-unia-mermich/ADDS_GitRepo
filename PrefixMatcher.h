@@ -1,60 +1,17 @@
-#ifndef AUTOCOMPLETE_H
-#define AUTOCOMPLETE_H
+#ifndef PREFIXMATCHER_H
+#define PREFIXMATCHER_H
 
 #include "TrieNode.h"
 
-class Autocomplete //is a Trie Node in the Trie data structure
+class PrefixMatcher //is a Trie Node in the Trie data structure
 {
     private:
        TrieNode* root; //a pointer pointing to a Trie node (the root)
+       std::unordered_map<std::string,int> routerAddress;
 
     public:
-        Autocomplete()
+        PrefixMatcher()
         {
-            //root = nullptr;
-            //!Why must we initiate root pointer to point to a TrieNode, but not allowing it to be a nullptr? Answer: if it is a nullptr, it does not point to any TrieNode and we have no staring letter of any words.
-            /*
-            because 
-                                                    TrieNode* root
-                                                            |
-                                                            |points to a TrieNode object
-                                                            |
-                        first Trie Node object: has (1) a map that can contains maximum 26 letters (however at one time it only contains the first letter of every word being added to the TrieNode structure) 
-                                                    (2) a boolean value of whether the word going from root to this node (since this is the first node, first level, the word is itself - the one letter) is a complete word or not
-                                The map is like a vector, but instead of having the index as numbers, we can have the index as anything (we call the 'key',in our case up to 26 chars (can be represented as char or string) the node stands for. *Note that one node does not represent one single value, but can represent up to 26 keys of char in the map*) The values are the TrieNode* pointers. 
-                |       |       |       |       |       |.......|       |       |       |       |       |
-                |       |       |       |       |       |       |       |       |       |       |       |each points to a TrieNode object (max 26 edges here)
-                |       |       |       |       |       |       |       |       |       |       |       |    
-
-                The last TrieNode object that has no children (eg. the map does not contain any TrieNode* pointers that point to a TrieNode object) is called a LEAF.
-
-                Let's say we have 3 words, 'be' and 'bet' and 'ball'. All are meaningful words.
-                If so then if the root pointer points to the first node (node1) (which is a TrideNode object).
-                
-                First, add "be" to the trie tree. 
-                First, iterate at the char 'b'.
-                Since the map of the first node is empty, no key of 'b' is found. 
-                Since no key of 'b' is found, add a pair (key,value)=('b',pointer1) to the map. pointer1 points to a new TrieNode object - let call this node2.
-                Next, iterate at the char 'e'. Find if the map of node2 has 'e'. If not, add a pair (key,value)=('e',pointer2) to the map of node2. pointer2 points to a new TrieNode object-let call this node3. Since 'be' is a word, the isWord in this object is true.
-
-                Second, add "bet" to the trie tree.
-                Iterate at 'b': search if the map of node 1 has 'b'. Yes. Go to the pointer1 that is paired up with 'b' that poitns to node2. Go to node2.
-                Iterate at 'e': search if the map of node 2 has 'e'. Yes. Go to the pointer2 that is paired up with 'e' that points to node3. Go to node3.
-                Iterate at 't': search if the map of node 3 has 't'. No. Right now the map of node3 is empty, just that isWord of node3 is true. Thus add a new pair ('t',pointer3) to the empty map of node3. pointer3 points to a new TrieNode object node4. Since 'bet' is a word, the isWord of 'bet' is True.
-
-                Third, add "ball" to the trie tree.
-                Iterate at 'b': search if the map of node 1 has 'b'. Yes. Go to the pointer1 that is paired up with 'b' that poitns to node2. Go to node2.
-                Iterate at 'a': search if the map of node 2 has 'a'. Right now the map of node2 only has 'e'. Thus add a new pair to map ('a':pointer2a). pointer 2a points to another node, node3a. Go to node3a.
-                Iterate at 'l': search of the map of node 3a has 'l'. No. Add a pair of ('l':pointer4a) to the map of node3a. Go to the TrieNode object that pointer4a points to.
-                Iterate at 'l': And so on.
-
-                the node object that has an empty map (thus has no children) and has isWord set to True is a leaf. 
-                ?Is this correct? or the node before this the leaf? But we know the leaf is the node that has no children, so it must be the TrieNode object that contains no TrieNode* pointers pointing to any other objects.
-
-                To see exactly how the Trie Structure works and how insertion in Trie works, see: https://www.youtube.com/watch?v=AXjmTQ8LEoI&ab_channel=TusharRoy-CodingMadeSimple
-
-
-            */
             root = new TrieNode();
 
         }
@@ -126,7 +83,7 @@ class Autocomplete //is a Trie Node in the Trie data structure
             */
         } 
 
-        void insert(std::string word) // add a word to the known words
+        void insert(std::string word) 
         {
             //rationale: keep on traversing. if cannot traverse anymore, create new node
             TrieNode* curr = root;
@@ -177,7 +134,6 @@ class Autocomplete //is a Trie Node in the Trie data structure
            }
         }
 
-        //his version: void getSuggestions(std::string partialWord, std::vector<std::string> allWords); 
         void searchAllWordsForPrefix(std::string prefix,std::vector<std::string>&results )
         {
             //1-Navigate to the word, and check if navigation is succesful (found or not)
@@ -192,15 +148,6 @@ class Autocomplete //is a Trie Node in the Trie data structure
             }
         }
         
-        std::vector<std::string> getSuggestions(std::string partialWord)
-        {
-            //return the known words that start with partialWord
-            std::vector<std::string> returnVector;
-            searchAllWordsForPrefix(partialWord,returnVector);
-            return returnVector;
-
-        }
-          
        
         std::string findLongestPrefixMatchingString(std::string word)
         {
@@ -225,7 +172,20 @@ class Autocomplete //is a Trie Node in the Trie data structure
             return parentWords.back();
         }
 
-         //Note that usually for a Node programm, we need to ensure (1) extraction (searching, or searching and deleting, or searching something and return something), (2) insertion, (3) traversal: all 3 things must be meaningful and efficient first before doing other functions
+        void insert(std::string address, int routerNumber) // add a router address
+        {
+            insert(address);
+            routerAddress.insert({address,routerNumber});
+        }
+
+        int selectRouter(std::string networkAddress)  // return the router with the longest matching prefix
+        {
+            std::string resultAdress= findLongestPrefixMatchingString(networkAddress);
+            auto findPointer = routerAddress.find(resultAdress);
+            int routerNumber = findPointer->second;
+            return routerNumber;
+        }
+
 
 };
 #endif
