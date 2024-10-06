@@ -12,7 +12,6 @@ class Autocomplete //is a Trie Node in the Trie data structure
         Autocomplete();
         TrieNode* tryGetToAWord(std::string prefix, std::string& travelledUntil, std::vector<std::string>& parentWork);
         void insert(std::string word);
-        void insert(std::string word); // add a word to the known words
         void searchAllWordsBelowAPrefix(TrieNode* node, std::string prefix, std::vector<std::string>&results);
         void searchAllWordsForPrefix(std::string prefix,std::vector<std::string>&results );
         std::vector<std::string> getSuggestions(std::string partialWord);
