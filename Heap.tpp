@@ -134,6 +134,7 @@ class Heap {
         }
 
         //!another approach to function heapifyDown() if we do not use recursion to fix all bubbles below, but just fix one bubble at a time. A void function is used.
+/*
         void swapOneBubble(heapIndex index) //function: checks the 2 direct children of the input index and swap with the smallest one if needed
         {
             heapIndex leftChildIndex = this->getLeftChildPosition(index);
@@ -150,7 +151,9 @@ class Heap {
                 std::swap(this->tree.at(minValueChildIndex), this->tree.at(index));
             }
         }
+*/
 
+/*
         std::vector<T>::iterator findPosition(T value) //find position of a value in the vector
         {
             auto it = std::find(this->tree.begin(), this->tree.end(), value);
@@ -167,6 +170,7 @@ class Heap {
             return -1;
         }
         }
+*/
 
     public:
         // Default constructor - creates an empty heap with a dummy element at index 0
@@ -278,7 +282,23 @@ class Heap {
             //!not sure if I can compare with zero in data type std::vector<int>::size_type; how to remove the case when minValueChildIndex=0
             while (parent>0) //?when do we use while loop instead of for loop? when we don't know how many iterations but we know the loop stops when a condition is no longer true.
             {
-                swapOneBubble(parent);
+                //swapOneBubble(parent);
+                heapIndex leftChildIndex = this->getLeftChildPosition(parent);
+                T leftChild = (leftChildIndex < this->tree.size())? this->tree.at(leftChildIndex) : std::numeric_limits<T>::max();
+                heapIndex rightChildIndex = this->getRightChildPosition(parent);
+                T rightChild = (rightChildIndex < this->tree.size())? this->tree.at(rightChildIndex) : std::numeric_limits<T>::max();
+                heapIndex minValueChildIndex = (leftChild < rightChild)? leftChildIndex: rightChildIndex;
+
+                //if the minValuChildIndex points to a node in the vector
+                if ((minValueChildIndex<this->tree.size())&&(minValueChildIndex>0)) //!not sure if I can compare with zero in data type std::vector<int>::size_type; how to remove the case when minValueChildIndex=0
+                {
+                    //swap
+                    //std::cout << "Swap positions in swapOneBubble " << minValueChildIndex << "(" << this->tree.at(minValueChildIndex) << ") and" << index << "(" << this->tree.at(index) << ")." << std::endl;
+                    if(this->tree.at(minValueChildIndex)<this->tree.at(parent))
+                    {
+                        std::swap(this->tree.at(minValueChildIndex), this->tree.at(parent));
+                    }
+                }
                 //get new parent index 
                 //in the last loop when parent =1; then we change parent to this->getParentPosition(1)=floor(1/2)=0 -> ends the loop
                 parent = this->getParentPosition(parent);
