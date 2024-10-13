@@ -328,7 +328,6 @@ class Heap {
            return this->tree.at(1);
         }
 };
-}
 #endif /* Tree_hpp */
 
 /*
