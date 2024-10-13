@@ -317,12 +317,12 @@ class Heap {
                 // Print only non-dummy elements
                 if((this->tree.at(index) != value) && (this->tree.at(index) != (T)NULL)) 
                 {
-                    new_tree.push_back(this->tree.at(index))
+                    new_tree.push_back(this->tree.at(index));
                 }
             }
 
             //2-heapfiy it and assign back to this->tree
-            heapify(new_tree)
+            heapify(new_tree);
         }
         
         // Get the minimum element (in this case, the minimum element of the min-heap)
