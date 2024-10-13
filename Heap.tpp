@@ -300,6 +300,10 @@ class Heap {
 
                 // Deleting the 3rd element from vector vec1
                 this->tree.erase(pos);
+
+                //reset the heap
+                this->heapify(this->tree);// Build a min-heap from an existing vector
+
             }
         }
         

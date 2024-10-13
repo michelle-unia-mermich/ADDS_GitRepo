@@ -57,6 +57,8 @@
         "vector": "cpp",
         "algorithm": "cpp",
         "*.tpp": "c",
-        "__memory": "c"
+        "__memory": "c",
+        "deque": "cpp",
+        "queue": "cpp"
     }
 }
