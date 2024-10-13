@@ -293,7 +293,7 @@ class Heap {
             //since re-heapifying from the beginning was O(n)
             //delete worst case is O(1)?
             auto index = findPosition(value);
-            if (index!=-1)
+            if (true) //!check when index is invalid?
             {
                 //meaning the value is found in the vector
                 // Fetching the iterator to this element
