@@ -157,14 +157,15 @@ class Heap {
 
             // Check if the element was found
 
-            if (it != numbers.end()) {
+            if (it != this->tree.end()) {
             //element is found
-           return std::distance(numbers.begin(), it);
+           return std::distance(this->tree.begin(), it);
 
             } else {
             //element is not found
             //!what should I return here?
             return -1;
+        }
         }
 
     public:
@@ -327,7 +328,7 @@ class Heap {
            return this->tree.at(1);
         }
 };
-
+}
 #endif /* Tree_hpp */
 
 /*
