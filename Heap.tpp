@@ -317,7 +317,7 @@ class Heap {
                 // Print only non-dummy elements
                 if(this->tree.at(index) != value) 
                 {
-                    new_tree.push(this->tree.at(index))
+                    new_tree.push_back(this->tree.at(index))
                 }
             }
 
