@@ -270,7 +270,7 @@ class Heap {
 
             //1-step 1: add the new element to the end of the vector
             this->tree.push_back(element);
-
+            auto index = findPosition(element);
             //2-find the parent of this element, swap if the new element is larger than the parent element
             //3-find the parent of the new parent element, swap if the new parent is larger then grand parent
             //doing all the way until the index decreases back to 1, the first element (until index >0)
