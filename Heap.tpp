@@ -292,6 +292,7 @@ class Heap {
             //O(n)
             //since re-heapifying from the beginning was O(n)
             //delete worst case is O(1)?
+            /*
             auto index = findPosition(value);
             if (true) //!check when index is invalid?
             {
@@ -306,6 +307,22 @@ class Heap {
                 this->heapify(this->tree);// Build a min-heap from an existing vector
 
             }
+            */
+
+            //1-Create a new std::vector<T> with no such input value
+            std::vector<T> new_tree;
+            //logic to loop from printVector
+            for(heapIndex index = 0; index < this->tree.size(); index++) 
+            {
+                // Print only non-dummy elements
+                if(this->tree.at(index) != value) 
+                {
+                    new_tree.push(this->tree.at(index))
+                }
+            }
+
+            //2-heapfiy it and assign back to this->tree
+            this->tree= heapify(new_tree)
         }
         
         // Get the minimum element (in this case, the minimum element of the min-heap)
