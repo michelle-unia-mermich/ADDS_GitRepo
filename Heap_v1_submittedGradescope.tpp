@@ -1,6 +1,7 @@
 //
 //  Heap.cpp
 //  Heap - Implementation of a Min-Heap data structure
+//* This version earns 6 points from gradescope
 //
 
 #ifndef Tree_hpp
@@ -79,7 +80,7 @@ class Heap {
             8
             Note: element 9's index is 12; and element 8's index is 24
 
-            Example 2: from the tree above, heapify down from element 9
+            Example 2: from the tree above, heapify down from element 9 at index 12
                 1                                           
                / \
               3   7    ----heapifyDown(12) (element 9)----------------->  
@@ -195,8 +196,10 @@ class Heap {
             this->printVector(this->tree);
         }
         
-        // Build a min-heap from an existing vector
+        // Heapify function from the lecturers: Build a min-heap from an existing vector, and assign this min heahp to the class this->tree
         void heapify(std::vector<T> tree) {
+            //*heapify core message: to build heap from an existing vector:
+            //*insert everything, then start to heapify down starting from the last parent going up to the first parent (root node)
             // Insert a dummy element at the beginning of the INPUT VECTOR to simplify calculations
             tree.insert(tree.begin(), (T) NULL);
             //? vec.insert (pos, val); position is tree.begin() instead of 0
@@ -234,6 +237,7 @@ class Heap {
         T popTop() {
             if(this->isHeapEmpty()) {
                 // Return a minimum value if the heap is empty
+                //!why returning a minimum value if the min heap is empty? must return a maximum value to make sense?
                 return std::numeric_limits<T>::min();
             }
             const heapIndex ROOT_INDEX = 1;
@@ -243,10 +247,21 @@ class Heap {
             std::cout << "Removed top element: " << topElement << std::endl;
             std::cout << "Placing index: " << (this->tree.size() - 1) << "(" << this->tree.at(this->tree.size() - 1) << ") to the top" << std::endl;
             this->tree.at(ROOT_INDEX) = this->tree.at(this->tree.size() - 1);
-            this->tree.pop_back();
+            this->tree.pop_back(); //remove the last element out
             
             std::cout << "Checking the if the heap condition is valid after popping out top of heap: " << topElement << std::endl;
             // Restore the heap property by heapifying down from the root
+            //*note: to restore the heap property, only need to check the bubbles that involve the newly changed parent node or child node
+            /*
+            eg. 1
+               / \
+               2  4
+            When we replace 1 with 3
+                2
+               / \
+               3  4
+            We continue to check the branch of 3 since there is change involved. no need to check the other sub-branch starting with 4
+            */
             heapIndex parent = ROOT_INDEX;
             this->heapifyDown(parent);
             return topElement;
@@ -367,12 +382,4 @@ class Heap {
 };
 #endif /* Tree_hpp */
 
-/*
-
-for the Heapfiy: create  heap from  an existing vector
-- have a non-recursive function that swaps between the parent node and the larger child node in one bubble
-- apply this non-recursive function iteratively for each parent node in the array (don't have to go through the whole array)
-O(1) - one set of operation happing in constant time
-
-*/
 

@@ -59,6 +59,7 @@
         "*.tpp": "c",
         "__memory": "c",
         "deque": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "functional": "cpp"
     }
 }
