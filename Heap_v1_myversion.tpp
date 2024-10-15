@@ -10,8 +10,8 @@
 template <typename T>
 /*
 IMPORTANT CONCEPTS
-!Ask again: Heap is by default a COMPLETE binary tree so besides the element at index 0, no other elements are NULL
-!Searching in Heap: what does it mean that we can only search/have access to the first top element? We cannot search for the index of any value in the heap? or is it that we can but that is not a benefit of Heap - Heap only provides benefits when we access the root element at the top?
+* Heap is by default a COMPLETE binary tree so besides the element at index 0, no other elements are NULL
+
 1) Build a heap from an existing vector
     - Combo 1:  (this combo is wrong, consider the case vector1 = {12,11,10,8,9,7,6,5,4};)
         + heapify_myVer1_norecursion(std::vector<T> tree)
@@ -23,10 +23,11 @@ IMPORTANT CONCEPTS
     - void insert(T element)
 3) Delete and extract the element at the root/top: 
     - T popTop()
-! What does it mean when the tutor says "we can only delete the first top element. If we delete any random element, might as well just rebuild the heap?"
+
 4) Delete any random element in the heap:  
     - void remove_rebuild(T value) (rebuild from scratch with the new vector)
     - void remove_reheapify(T value): replace the deleted value with the last elemetn and reheapify
+    !The tutor said: we should only delete the first top element. If we delete any random element, we might as well just build the heap from scratch. 
     !The two methods give two correct answers, which is correct? See example in main.cpp Part 7
 5) Heap Sort: 
     - std::vector<T> heapSort(std::vector<T> numList)
@@ -58,7 +59,7 @@ class Heap {
             return (heapIndex) std::floor(i / 2);
         }
         
-        //*an alternative to heapifyDown, no recursion
+        //function for a single step of heapifyDown, only check at one parent node and its 2 children, no recursion:
         void swapOneBubble(heapIndex index) //function: checks the 2 direct children of the input index and swap with the smallest one if needed
         {
             heapIndex leftChildIndex = this->getLeftChildPosition(index);
@@ -80,24 +81,9 @@ class Heap {
             }
         }
        
-        //!disconcerting function
-        std::vector<T>::iterator findPosition(T value) //find position of a value in the vector
-        {
-            auto it = std::find(this->tree.begin(), this->tree.end(), value);
-
-            // Check if the element was found
-
-            if (it != this->tree.end()) {
-            //element is found
-           return std::distance(this->tree.begin(), it);
-
-            } else {
-            //element is not found
-            //!what should I return here?
-            return -1;
-        }
-        }
-
+       /*
+       Note: heapifyDown() function should be in private (helper function), but just for testing, we put it in public.
+       */
 
     public:
         Heap() 
@@ -133,8 +119,16 @@ class Heap {
             
             // Find the child with the smaller value
             heapIndex minValueChildIndex = (leftChild < rightChild)? leftChildIndex: rightChildIndex;
+
+            /*
+            Of course, since the heap is a complete binary tree so the only time when the rightChild is std::numeric_limits<T>::min() is when the rightChildINdex is out of range of the vector.
+            minValueChildIndex = rightChildIndex = out of range, so if statement if(minValueChildIndex < this->tree.size()) is false.
+
+            This is only false when rightChildIndex= minValueChildIndex is in range of this->tree.size() and 
+            this->tree.at(minValueChildIndex) is a NULL object in the vector (which cannot happen for complete binary trees.)
+            */
             
-            //! If a child has a smaller value (WE ARE DOING MIN HEAP), swap it with the parent and recursively heapify down
+            //If a child has a smaller value (WE ARE DOING MIN HEAP), swap it with the parent and recursively heapify down
             if(minValueChildIndex < this->tree.size()){
                 if(this->tree.at(minValueChildIndex) < this->tree.at(index)) {
                     //std::cout << "Swap positions " << minValueChildIndex << "(" << this->tree.at(minValueChildIndex) << ") and" << index << "(" << this->tree.at(index) << ")." << std::endl;
@@ -143,11 +137,11 @@ class Heap {
                     this->heapifyDown(minValueChildIndex); //swap the new child with its new child (if needed). The returned heapIndex value is not stored anywhere.
                     //*we are checking between the children of the new minvaluenode and check if we need to swap
                     //*all the way until minValueChildIndex is not < this->tree.size() eg. we have reached the end of the vector
-                    return minValueChildIndex; //!the actual return value of heapifyDown(heapIndex index) if index swaps with a child if we access heapifyDown(heapInde index) from outside the class
+                    return minValueChildIndex; //the actual return value of heapifyDown(heapIndex index) if index swaps with a child if we access heapifyDown(heapInde index) from outside the class
                 }
             }
             // End Recursion: either (1) Reached a leaf node (when condition on line 58 if(minValueChildIndex < this->tree.size()) is false) or (2) no child has a smaller value (when condition on line 59 if(this->tree.at(minValueChildIndex) < this->tree.at(index)) is false), return the size of the vector
-            return this->tree.size(); //!the actual return value of heapifyDown(heapIndex index) if there is no swapping, when we access heapifyDown(heapInde index) from outside the class
+            return this->tree.size(); //the actual return value of heapifyDown(heapIndex index) if there is no swapping, when we access heapifyDown(heapInde index) from outside the class
             // since they want to return a heapIndex value when doing heapifying, they didn't declare this function as void. We could also declare it as void.
         }
         
@@ -164,7 +158,7 @@ class Heap {
             T leftChild = leftChildIndexInRange_andNonNullNode ? this->tree.at(leftChildIndex) : std::numeric_limits<T>::max();
             T rightChild = rightChildIndexInRange_andNonNullNode ? this->tree.at(rightChildIndex) : std::numeric_limits<T>::max();
             heapIndex minValueChildIndex = (leftChild < rightChild)? leftChildIndex: rightChildIndex;
-            //!if both are equal what will minValueChildIndex be?
+            //if both are equal what will minValueChildIndex be? Answer: both cannot be equal because heap is a complete binary tree.
             
             //need to check the condnition of minValueChildIndex again because we have only checked the conditions to get the the T value at that index
             //for example, if the index is out of range but the minValueChildIndex chosen is out of range, we have only known the T value is std::numeric_limits but we haven't set any conditions for the value itself
@@ -193,7 +187,7 @@ class Heap {
             this->printVector(this->tree);
         }
         
-        //!disconcerting function
+        //!wrong function due to heapifyDown() min()
         // Build a min-heap from an existing vector, and assign this min heahp to the class this->tree
         void heapify_lecturerVer(std::vector<T> tree) 
         {
@@ -207,14 +201,13 @@ class Heap {
             // Start from the last non-dummy element (the rightmost bottommost element of the heap) and work backwards (going up the  heap) to maintain the heap property
             //we only need to heapify down from the parent node. the formula to find the last parent node floow[n/2] (since we start with index 0); 
             //however, we heapifyDown every node, including the last child nodes because this way is cleaner
-            //? Why is this cleaner than ignoring the last leaf nodes?
+            //Why is this cleaner than ignoring the last leaf nodes?
             //because, consider the function heapifyDown() at the leaf node, the nodes have no children so the heapifyDown() leftChild and rightChild will always be maximum negative values. so the time to complete heapifyDown() for each leaf node is constant
-            //!time complexity O(n) for heapfiy?
             for(heapIndex index = this->tree.size() - 1; index >= 1; index--) {
-                //!no need to check for null nodes in non-complete trees? 
                 this->heapifyDown(index);
             }
         }
+        
         //!function heapify_myVer1_norecursion is wrong: consider example: {12,11,10,8,9,7,6,5,4};
         void heapify_myVer1_norecursion(std::vector<T> tree)
         {
@@ -231,7 +224,6 @@ class Heap {
            *Find the last parent node
                 - if the first node starts at 0: last parent node is floor(n/2)-1
                 - if the first node starts at 1: last parent node is floor(n/2)
-                !check these formulas again
            */
           //note that the number of nodes in the vector is this->tree.size()-1 since element NULL at index 0 is included in this->tree.size()
           heapIndex lastParentNodeIndex = std::floor((this->tree.size()-1)/2);
@@ -254,6 +246,7 @@ class Heap {
           }
 
         }
+        
         //heapify_myVer2_recursionStartFromLastParentNode is correct
         void heapify_myVer2_recursionStartFromLastParentNode(std::vector<T> tree) 
         {
@@ -285,13 +278,13 @@ class Heap {
             std:: cout << " ]" << std::endl;
         }
         
-        //popTop is wrong due to heapifyDown() min()
+        //!popTop is wrong due to heapifyDown() min()
+        //!why returning a minimum value if the min heap is empty? must return a maximum value to make sense?
         T popTop() 
         {
             // Remove the minimum element (at the root) from the heap
             if(this->isHeapEmpty()) {
                 // Return a minimum value if the heap is empty
-                //!why returning a minimum value if the min heap is empty? must return a maximum value to make sense?
                 return std::numeric_limits<T>::min();
             }
             const heapIndex ROOT_INDEX = 1;
@@ -341,6 +334,7 @@ class Heap {
             return topElement;
         }
 
+        //!why using insert repeatedly but don't use heapify()?
         std::vector<T> heapSort(std::vector<T> numList) 
         {
             //Descriptin: a function that takes in an input vector andn return a sorted input vector in ascending order
@@ -352,7 +346,6 @@ class Heap {
             for(typename std::vector<T>::size_type index = 0; index < numList.size(); index++) {
                 tree1.insert(numList[index]);
             }
-            //!why using insert repeatedly but don't use heapify()?
             
             std::vector<T> sortedNumList;
             // Extract the minimum elements one by one and add them to the sorted list
@@ -367,6 +360,7 @@ class Heap {
             return sortedNumList;
         }
         
+        //!Check again
         // Insert an element into the heap
         void insert(T element) 
         {
@@ -379,7 +373,7 @@ class Heap {
             //3-find the parent of the new parent element, swap if the new parent is larger then grand parent
             //doing all the way until the index decreases back to 1, the first element (until index >0)
             heapIndex parent = this->getParentPosition(index);
-            //!not sure if I can compare with zero in data type std::vector<int>::size_type; how to remove the case when minValueChildIndex=0
+            //not sure if I can compare with zero in data type std::vector<int>::size_type; how to remove the case when minValueChildIndex=0
             while (parent>0) //* Important notice: when do we use while loop instead of for loop? when we don't know how many iterations but we know the loop stops when a condition is no longer true.
             {
                 //no need to check if the object of parent is !=NULL or if parent < tree.size() because from getParentPosition(index); it indeed is
@@ -391,29 +385,10 @@ class Heap {
 
         }
         
+        //!Check again
         // Remove an (any) element from the heap
         void remove_rebuild(T value) 
         {
-            //O(n)
-            //since re-heapifying from the beginning was O(n)
-            //delete worst case is O(1)?
-            /*
-            auto index = findPosition(value);
-            if (true) //!check when index is invalid?
-            {
-                //meaning the value is found in the vector
-                // Fetching the iterator to this element
-                auto pos = this->tree.begin() + index;
-
-                // Deleting the 3rd element from vector vec1
-                this->tree.erase(pos);
-
-                //reset the heap
-                this->heapify(this->tree);// Build a min-heap from an existing vector
-
-            }
-            */
-
             //1-Create a new std::vector<T> with no such input value
             std::vector<T> new_tree;
             //logic to loop from printVector
@@ -430,6 +405,7 @@ class Heap {
             heapify_myVer2_recursionStartFromLastParentNode(new_tree);
         }
 
+        //!Check again
         void remove_reheapify(T value)
         {
             //change the value at the position and remove the last element
