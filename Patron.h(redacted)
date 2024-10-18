@@ -1,0 +1,15 @@
+#ifndef Patron_h
+#define Patron_h
+
+#include <iostream>
+#include <string>
+
+class Patron
+{
+    public:
+        std::string patronID;
+    //Since Patron only has patronID, one attribute, we don't need this class at all
+    
+};
+
+#endif 

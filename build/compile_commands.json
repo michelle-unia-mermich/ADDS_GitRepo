@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -o CMakeFiles/DocumentManager.dir/Document.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp",
+  "file": "/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp",
+  "output": "CMakeFiles/DocumentManager.dir/Document.cpp.o"
+},
+{
+  "directory": "/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -o CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp",
+  "file": "/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp",
+  "output": "CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o"
+},
+{
+  "directory": "/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -o CMakeFiles/DocumentManager.dir/main.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp",
+  "file": "/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp",
+  "output": "CMakeFiles/DocumentManager.dir/main.cpp.o"
+}
+]

@@ -40,5 +40,77 @@ void DocumentManager::addDocument(std::string docName, int docid, int license_li
 
  bool DocumentManager::borrowDocument(int docid, int patronID)
  {
+    //Part 1: only allow borrowing if patronID is inside the saved vector
+    //*LEARN: how to check whether a vector contains an element
+    if(std::find(existingPatronID.begin(), existingPatronID.end(), patronID) != existingPatronID.end()) 
+    {
+        /* existingPatronID contains patronID */
+        for (auto map_pair : docID_PatronID)
+        {
+            //*LEARN: how to traverse through an unordered_map
+            if ((map_pair.first)==docid)
+            {   
+                int license_limit =0;
+                //find and then compare with the license_limit of this docid
+                for (auto document:existingDocuments )
+                {
+                    if (document.docid==docid)
+                    {
+                        license_limit = document.license_limit;
+                    }
+                }
+                if (map_pair.second.size()<license_limit)
+                {
+                    //add patronID to the vector if the limit for this document has not been reached
+                    map_pair.second.push_back(patronID);
+                    return true;
+                }
+            }
+        }
+
+    } 
+    return false;
+ }
+
+ // Function to find the index of an element in a vector
+int getIndex(std::vector<int> v, int K)
+{
+    auto it = std::find(v.begin(), v.end(), K);
+    // If element was found
+    if (it != v.end()) 
+    {
     
+        // calculating the index
+        // of K
+        int index = it - v.begin();
+        return index;
+    }
+    else {
+        // If the element is not
+        // present in the vector
+        return -1;
+    }
+}
+
+ void DocumentManager::returnDocument(int docid, int patronID)
+ {
+    if(std::find(existingPatronID.begin(), existingPatronID.end(), patronID) != existingPatronID.end()) 
+    {
+        /* existingPatronID contains patronID */
+        for (auto map_pair : docID_PatronID)
+        {
+            //if map_pair key is the doc id and the vector of this value conatins the patronID
+            if ((map_pair.first==docid)&&(std::find(map_pair.second.begin(), map_pair.second.end(), patronID) != existingPatronID.end()) )
+            {   
+                //remove the patronID from the this vector
+                //*LEARN: how to remove a certain value from a vector
+                //find the index of this element
+                int index = getIndex(map_pair.second,patronID);
+                //erase the element at this index
+                map_pair.second.erase(map_pair.second.begin(),map_pair.second.begin()+index); 
+
+            }
+        }
+
+    } 
  }
