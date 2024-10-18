@@ -1,0 +1,2 @@
+#ifdef Document_Manager_h
+#define Document_Manager_h
