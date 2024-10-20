@@ -196,7 +196,7 @@ class Heap {
         }
         
         // Remove an element from the heap
-        // !my method, might not be optimal
+        // Both removing methods are correct, can result in 2 different resultant heaps
         void remove(T value) {
                 //1-Create a new std::vector<T> with no such input value
             std::vector<T> new_tree;
@@ -207,6 +207,7 @@ class Heap {
                 if((this->tree.at(index) != value) && (this->tree.at(index) != (T)NULL)) 
                 {
                     new_tree.push_back(this->tree.at(index));
+                    //!this method is wrong if there is duplicate values. Just use vector.erase(vector.begin()+position)
                 }
             }
 

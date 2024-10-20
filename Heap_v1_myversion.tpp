@@ -399,6 +399,8 @@ class Heap {
                 if((this->tree.at(index) != value) && (this->tree.at(index) != (T)NULL)) 
                 {
                     new_tree.push_back(this->tree.at(index));
+                     //!this method is wrong if there is duplicate values. Just use vector.erase(vector.begin()+position)
+                }
                 }
             }
 
