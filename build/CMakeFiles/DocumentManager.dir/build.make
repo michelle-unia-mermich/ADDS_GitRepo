@@ -69,60 +69,60 @@ include CMakeFiles/DocumentManager.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/DocumentManager.dir/flags.make
 
+CMakeFiles/DocumentManager.dir/main.cpp.o: CMakeFiles/DocumentManager.dir/flags.make
+CMakeFiles/DocumentManager.dir/main.cpp.o: /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp
+CMakeFiles/DocumentManager.dir/main.cpp.o: CMakeFiles/DocumentManager.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DocumentManager.dir/main.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DocumentManager.dir/main.cpp.o -MF CMakeFiles/DocumentManager.dir/main.cpp.o.d -o CMakeFiles/DocumentManager.dir/main.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp
+
+CMakeFiles/DocumentManager.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DocumentManager.dir/main.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp > CMakeFiles/DocumentManager.dir/main.cpp.i
+
+CMakeFiles/DocumentManager.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DocumentManager.dir/main.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp -o CMakeFiles/DocumentManager.dir/main.cpp.s
+
 CMakeFiles/DocumentManager.dir/Document.cpp.o: CMakeFiles/DocumentManager.dir/flags.make
 CMakeFiles/DocumentManager.dir/Document.cpp.o: /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp
 CMakeFiles/DocumentManager.dir/Document.cpp.o: CMakeFiles/DocumentManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DocumentManager.dir/Document.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DocumentManager.dir/Document.cpp.o -MF CMakeFiles/DocumentManager.dir/Document.cpp.o.d -o CMakeFiles/DocumentManager.dir/Document.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DocumentManager.dir/Document.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DocumentManager.dir/Document.cpp.o -MF CMakeFiles/DocumentManager.dir/Document.cpp.o.d -o CMakeFiles/DocumentManager.dir/Document.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp
 
 CMakeFiles/DocumentManager.dir/Document.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DocumentManager.dir/Document.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp > CMakeFiles/DocumentManager.dir/Document.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp > CMakeFiles/DocumentManager.dir/Document.cpp.i
 
 CMakeFiles/DocumentManager.dir/Document.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DocumentManager.dir/Document.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp -o CMakeFiles/DocumentManager.dir/Document.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/Document.cpp -o CMakeFiles/DocumentManager.dir/Document.cpp.s
 
 CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o: CMakeFiles/DocumentManager.dir/flags.make
 CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o: /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp
 CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o: CMakeFiles/DocumentManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o -MF CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o.d -o CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o -MF CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o.d -o CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp
 
 CMakeFiles/DocumentManager.dir/DocumentManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DocumentManager.dir/DocumentManager.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp > CMakeFiles/DocumentManager.dir/DocumentManager.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp > CMakeFiles/DocumentManager.dir/DocumentManager.cpp.i
 
 CMakeFiles/DocumentManager.dir/DocumentManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DocumentManager.dir/DocumentManager.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp -o CMakeFiles/DocumentManager.dir/DocumentManager.cpp.s
-
-CMakeFiles/DocumentManager.dir/main.cpp.o: CMakeFiles/DocumentManager.dir/flags.make
-CMakeFiles/DocumentManager.dir/main.cpp.o: /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp
-CMakeFiles/DocumentManager.dir/main.cpp.o: CMakeFiles/DocumentManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DocumentManager.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DocumentManager.dir/main.cpp.o -MF CMakeFiles/DocumentManager.dir/main.cpp.o.d -o CMakeFiles/DocumentManager.dir/main.cpp.o -c /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp
-
-CMakeFiles/DocumentManager.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DocumentManager.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp > CMakeFiles/DocumentManager.dir/main.cpp.i
-
-CMakeFiles/DocumentManager.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DocumentManager.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/main.cpp -o CMakeFiles/DocumentManager.dir/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/DocumentManager.cpp -o CMakeFiles/DocumentManager.dir/DocumentManager.cpp.s
 
 # Object files for target DocumentManager
 DocumentManager_OBJECTS = \
+"CMakeFiles/DocumentManager.dir/main.cpp.o" \
 "CMakeFiles/DocumentManager.dir/Document.cpp.o" \
-"CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o" \
-"CMakeFiles/DocumentManager.dir/main.cpp.o"
+"CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o"
 
 # External object files for target DocumentManager
 DocumentManager_EXTERNAL_OBJECTS =
 
+DocumentManager: CMakeFiles/DocumentManager.dir/main.cpp.o
 DocumentManager: CMakeFiles/DocumentManager.dir/Document.cpp.o
 DocumentManager: CMakeFiles/DocumentManager.dir/DocumentManager.cpp.o
-DocumentManager: CMakeFiles/DocumentManager.dir/main.cpp.o
 DocumentManager: CMakeFiles/DocumentManager.dir/build.make
 DocumentManager: CMakeFiles/DocumentManager.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/michellenguyen/Documents/S2_2024/ADDS_GitRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable DocumentManager"

@@ -56,6 +56,13 @@
         "vector": "cpp",
         "algorithm": "cpp",
         "__tree": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "condition_variable": "cpp",
+        "iomanip": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "span": "cpp",
+        "stack": "cpp",
+        "thread": "cpp"
     }
 }

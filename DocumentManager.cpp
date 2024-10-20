@@ -45,8 +45,9 @@ void DocumentManager::addDocument(std::string docName, int docid, int license_li
     if(std::find(existingPatronID.begin(), existingPatronID.end(), patronID) != existingPatronID.end()) 
     {
         /* existingPatronID contains patronID */
-        for (auto map_pair : docID_PatronID)
+        for (auto& map_pair : docID_PatronID)
         {
+            
             //*LEARN: how to traverse through an unordered_map
             if ((map_pair.first)==docid)
             {   
@@ -57,14 +58,17 @@ void DocumentManager::addDocument(std::string docName, int docid, int license_li
                     if (document.docid==docid)
                     {
                         license_limit = document.license_limit;
+                        break;
                     }
                 }
                 if (map_pair.second.size()<license_limit)
                 {
                     //add patronID to the vector if the limit for this document has not been reached
                     map_pair.second.push_back(patronID);
+                    //make sure that we push back to the vector in this->docID_PatronID not the shallow copy of map_pair
                     return true;
                 }
+                break;
             }
         }
 
@@ -94,20 +98,39 @@ int getIndex(std::vector<int> v, int K)
 
  void DocumentManager::returnDocument(int docid, int patronID)
  {
-    if(std::find(existingPatronID.begin(), existingPatronID.end(), patronID) != existingPatronID.end()) 
+    //note: in the getIndex function, we use: std::find is an STL function that is used to find a particular element in the given range. It returns an iterator to the first occurrence of the given element in the range
+    //therefore, each returnDocument function only removes 1 occurence
+    //ef. if the personID 100 borrows document 2 2 times, the return Document only removes 1 time of borrowing.
+    //however we assume each patron only borrows 1 copy of a document.
+    bool isPatronID_in_existingPatronID = std::find(existingPatronID.begin(), existingPatronID.end(), patronID) != existingPatronID.end() ;
+    if(isPatronID_in_existingPatronID) 
     {
         /* existingPatronID contains patronID */
-        for (auto map_pair : docID_PatronID)
+        for (auto& map_pair : docID_PatronID)
         {
             //if map_pair key is the doc id and the vector of this value conatins the patronID
-            if ((map_pair.first==docid)&&(std::find(map_pair.second.begin(), map_pair.second.end(), patronID) != existingPatronID.end()) )
+            if ((map_pair.first==docid))
             {   
-                //remove the patronID from the this vector
-                //*LEARN: how to remove a certain value from a vector
-                //find the index of this element
-                int index = getIndex(map_pair.second,patronID);
-                //erase the element at this index
-                map_pair.second.erase(map_pair.second.begin(),map_pair.second.begin()+index); 
+                bool isPatronID_in_vectorOfDocid=(std::find(map_pair.second.begin(), map_pair.second.end(), patronID) != existingPatronID.end());
+                if (isPatronID_in_vectorOfDocid)
+                {
+                    //remove the patronID from the this vector
+                    //*LEARN: how to remove a certain value from a vector
+                    //find the index of this element
+                    int index = getIndex(map_pair.second,patronID);
+                    //note if  isPatronID_in_vectorOfDocid is true and index is also different from -1
+                    //erase the element at this index
+                    if(index!=-1)
+                    {
+                        map_pair.second.erase(map_pair.second.begin()+index); 
+
+                    }
+                    else
+                    {
+                        std::cout<<"ERROR, index has to be different from -1 but is -1."<<std::endl;
+                    }
+                }
+                break;
 
             }
         }

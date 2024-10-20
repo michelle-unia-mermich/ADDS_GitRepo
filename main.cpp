@@ -15,5 +15,11 @@ int main()
     docMag.addPatron(102);
 
     docMag.borrowDocument(2, 100); 
+    docMag.borrowDocument(3, 101); 
+    docMag.borrowDocument(4, 102); 
+
     docMag.returnDocument(2, 100); 
+    docMag.returnDocument(4, 102);
+
+
 }
