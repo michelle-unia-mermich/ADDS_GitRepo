@@ -105,11 +105,11 @@ class Heap {
             this->tree = tree;
         }
         
-        //!function heapifyDown from the lecturer is wrong, and thus heapify_lecturerVer is wrong
+        
         //heapifyDown the lecturer's version
         heapIndex heapifyDown(heapIndex index) 
         {
-
+            //!function heapifyDown from the lecturer is wrong, and thus heapify_lecturerVer is wrong
             heapIndex leftChildIndex = this->getLeftChildPosition(index);
             //if the index is within range output the object from the vector, if not output the extreme negative number as a dummy number
             T leftChild = (leftChildIndex < this->tree.size())? this->tree.at(leftChildIndex) : std::numeric_limits<T>::min();
@@ -187,10 +187,11 @@ class Heap {
             this->printVector(this->tree);
         }
         
-        //!wrong function due to heapifyDown() min()
+        
         // Build a min-heap from an existing vector, and assign this min heahp to the class this->tree
         void heapify_lecturerVer(std::vector<T> tree) 
         {
+            //!wrong function due to heapifyDown() min()
             // Insert a dummy element at the beginning of the INPUT VECTOR to simplify calculations
             tree.insert(tree.begin(), (T) NULL);
             //? vec.insert (pos, val); position is tree.begin() instead of 0
@@ -208,9 +209,10 @@ class Heap {
             }
         }
         
-        //!function heapify_myVer1_norecursion is wrong: consider example: {12,11,10,8,9,7,6,5,4};
+        
         void heapify_myVer1_norecursion(std::vector<T> tree)
         {
+            //!function heapify_myVer1_norecursion is wrong: consider example: {12,11,10,8,9,7,6,5,4};
             tree.insert(tree.begin(), (T) NULL);
             this->tree = tree;
             /*
@@ -266,19 +268,17 @@ class Heap {
         void printVector(std::vector<T> numVector) 
         {
             std::cout << "[ ";
-            for(heapIndex index = 0; index < numVector.size(); index++) {
+            for(heapIndex index = 1; index < numVector.size(); index++) {
                 // Print only non-dummy elements
-                if(numVector.at(index) != (T) NULL) {
                     std::cout << numVector.at(index);
                     if(index != (numVector.size() - 1)) {
                         std::cout << ", ";
-                    }
                 }
             }
             std:: cout << " ]" << std::endl;
         }
         
-        //!popTop is wrong due to heapifyDown() min()
+        
         //!why returning a minimum value if the min heap is empty? must return a maximum value to make sense?
         T popTop() 
         {
@@ -288,6 +288,7 @@ class Heap {
                 return std::numeric_limits<T>::min();
             }
             const heapIndex ROOT_INDEX = 1;
+            //!popTop is wrong due to heapifyDown() min()
             
             // Replace the root with the last element
             T topElement = this->tree.at(ROOT_INDEX);
