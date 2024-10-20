@@ -61,8 +61,11 @@ void DocumentManager::addDocument(std::string docName, int docid, int license_li
                         break;
                     }
                 }
-                if (map_pair.second.size()<license_limit)
+                if (map_pair.second.size()<((long unsigned int) license_limit))
                 {
+                    //if no casting will have this error
+                    //warning: comparison of integer expressions of different signedness: ‘std::vector<int>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+
                     //add patronID to the vector if the limit for this document has not been reached
                     map_pair.second.push_back(patronID);
                     //make sure that we push back to the vector in this->docID_PatronID not the shallow copy of map_pair
