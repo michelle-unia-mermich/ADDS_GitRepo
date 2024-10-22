@@ -116,7 +116,7 @@ class Heap {
         T popTop() {
             if(this->isHeapEmpty()) {
                 // Return a minimum value if the heap is empty
-                return std::numeric_limits<T>::min();
+                return std::numeric_limits<T>::min(); //return a dummy element, does not matter min or max
             }
             const heapIndex ROOT_INDEX = 1;
             
@@ -139,7 +139,7 @@ class Heap {
             Heap<T> tree1;
             // Build a min-heap from the input vector
             for(typename std::vector<T>::size_type index = 0; index < numList.size(); index++) {
-                tree1.insert(numList[index]);
+                tree1.insert(numList[index]); //can also use heapify() heapify from a vector
             }
             
             std::vector<T> sortedNumList;
@@ -152,7 +152,7 @@ class Heap {
         }
         
         // Insert an element into the heap
-        // !my method, might not be optimal
+        // !my method is the optimal one
         void insert(T element) {
             //1-step 1: add the new element to the end of the vector
             this->tree.push_back(element);
